@@ -28,7 +28,7 @@ public class AlphaScreenshot : MonoBehaviour
             var path = PlayerPrefs.GetString("Screenshot_path", string.Empty);
             if (path != string.Empty)
             {
-                StartCoroutine(SaceScreenshotWithAlpha(path));
+                StartCoroutine(SaveScreenshotWithAlpha(path));
             }
         }
     }
@@ -38,7 +38,7 @@ public class AlphaScreenshot : MonoBehaviour
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
-    private IEnumerator SaceScreenshotWithAlpha(string path)
+    private IEnumerator SaveScreenshotWithAlpha(string path)
     {
         //初期値取得
         var camera = Camera.main;
@@ -72,7 +72,7 @@ public class AlphaScreenshot : MonoBehaviour
         camera.backgroundColor = defaultColor;
         camera.Render();
 
-        Debug.Log($"Compleat {path}");
+        Debug.Log($"Complete {path}");
 
     }
 }

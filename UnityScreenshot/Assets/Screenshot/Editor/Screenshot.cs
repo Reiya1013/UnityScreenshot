@@ -41,7 +41,7 @@ public class Screenshot : MonoBehaviour
         }
         else
         {
-            SaceScreenshot(path);
+            SaveScreenshot(path);
         }
     }
 
@@ -68,7 +68,7 @@ public class Screenshot : MonoBehaviour
         }
         else
         {
-            SaceScreenshot(path);
+            SaveScreenshot(path);
         }
     }
 
@@ -76,7 +76,7 @@ public class Screenshot : MonoBehaviour
     /// GameViewの3倍解像度で保存する
     /// </summary>
     /// <param name="path"></param>
-    private static void SaceScreenshot(string path)
+    private static void SaveScreenshot(string path)
     {
         // キャプチャを撮る
         ScreenCapture.CaptureScreenshot(path, 3);

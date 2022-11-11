@@ -1,5 +1,5 @@
 # UnityScreenshot
-UnityProject上で高解像度スクリーンショットと背景透過スクリーンショットを取るための拡張エディタです。  
+UnityProject上で高解像度スクリーンショットと背景透過スクリーンショットを取るためのエディタ拡張です。  
 
 ## 導入手順
 1.最新のUnityPackageをインストールします。[ダウンロード先](https://github.com/Reiya1013/UnityScreenshot/releases)    
@@ -8,7 +8,7 @@ UnityProject上で高解像度スクリーンショットと背景透過スク�
 
 ## 撮影方法
 1.シーンを実行します。  
-2.Edit > Screenshotにというメニューが増えているので、選択することでスクリーンショットが取れます。  
+2.Edit > Screenshotというメニューが増えているので、選択することでスクリーンショットが取れます。  
 ※ショートカットキー(Cntl+Shift+F10 or F11)でも可能  
 ・WithAlpha：透過保存するかしないかの選択  
 ・Save AssetsFolder：Assetsフォルダの下に日付名で自動保存  

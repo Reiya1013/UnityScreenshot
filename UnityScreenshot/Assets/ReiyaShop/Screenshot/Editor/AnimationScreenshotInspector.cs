@@ -4,6 +4,7 @@
 // MIT Licence
 //******************************************************
 using Kyusyukeigo.Helper;
+using System.IO;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -88,14 +89,15 @@ public class AnimationScreenshotInspector : Editor
 
         // スペースを空ける
         GUILayout.Space(EditorGUIUtility.singleLineHeight);
-
         if (GUILayout.Button("撮影開始"))
         {
+            AddAndSelect8K();
             StartScene(true);
-            if (isFixCameraSettingProperty.boolValue) SetCamera((Animator)avatarProperty.objectReferenceValue);
-            SetAnimaton((Animator)avatarProperty.objectReferenceValue, (AnimationClip)clipProperty.objectReferenceValue, (AnimationClip)faceclipProperty.objectReferenceValue, displayTimeProperty.intValue);
+            if (isFixCameraSettingProperty.boolValue)
+                SetCamera((Animator)avatarProperty.objectReferenceValue);
+            if ((Animator)avatarProperty.objectReferenceValue != null && (AnimationClip)clipProperty.objectReferenceValue != null)
+                SetAnimaton((Animator)avatarProperty.objectReferenceValue, (AnimationClip)clipProperty.objectReferenceValue, (AnimationClip)faceclipProperty.objectReferenceValue, displayTimeProperty.intValue);
         }
-
     }
 
     private void GUNNotPlayng()
@@ -139,8 +141,8 @@ public class AnimationScreenshotInspector : Editor
         GUILayout.Space(EditorGUIUtility.singleLineHeight);
 
         // アニメーションの再生位置を設定する
-        StartAnimation((Animator)avatarProperty.objectReferenceValue, displayTimeProperty.floatValue);
-
+        if ((Animator)avatarProperty.objectReferenceValue != null)
+            StartAnimation((Animator)avatarProperty.objectReferenceValue, displayTimeProperty.floatValue);
 
         if (GUILayout.Button("撮影"))
         {
@@ -152,7 +154,6 @@ public class AnimationScreenshotInspector : Editor
 
             if (isAlphaProperty.boolValue)
             {
-                AddAndSelect8K();
                 PlayerPrefs.SetInt("Screenshot_isCapture", 1);
                 PlayerPrefs.SetString("Screenshot_path", saveFolderProperty.stringValue);
             }

@@ -13,7 +13,7 @@ using UnityEngine;
 
 public class Screenshot : MonoBehaviour
 {
-    [MenuItem("ReiyaShop/Screenshot")]
+    [MenuItem("ReiyaShop/Add screenshot Inspector")]
     private static void AddScreenshotObject()
     {
         string guid = "dbfe01bf41d3ec54cbaaffb4db9341f8";

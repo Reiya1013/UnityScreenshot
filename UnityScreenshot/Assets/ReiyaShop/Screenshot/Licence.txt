@@ -1,0 +1,3 @@
+[MIT Licence]
+unity-GameViewSizeHelper
+https://github.com/anchan828/unity-GameViewSizeHelper

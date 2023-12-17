@@ -27,7 +27,7 @@ public class AnimationScreenshotInspector : Editor
         }
         else
         {
-            GUNNotPlayng();
+            GUINoPlaying();
         }
     }
 
@@ -95,14 +95,13 @@ public class AnimationScreenshotInspector : Editor
             StartScene(true);
             if (isFixCameraSettingProperty.boolValue)
                 SetCamera((Animator)avatarProperty.objectReferenceValue);
-            if ((Animator)avatarProperty.objectReferenceValue != null && (AnimationClip)clipProperty.objectReferenceValue != null)
+            if ((Animator)avatarProperty.objectReferenceValue != null && ((AnimationClip)clipProperty.objectReferenceValue != null || (AnimationClip)faceclipProperty.objectReferenceValue != null))
                 SetAnimaton((Animator)avatarProperty.objectReferenceValue, (AnimationClip)clipProperty.objectReferenceValue, (AnimationClip)faceclipProperty.objectReferenceValue, displayTimeProperty.intValue);
         }
     }
 
-    private void GUNNotPlayng()
+    private void GUINoPlaying()
     {
-
         // serializedObjectからSAnimationScreenshotのプロパティを取得
         SerializedProperty avatarProperty = serializedObject.FindProperty("_avatar");
         SerializedProperty clipProperty = serializedObject.FindProperty("_clip");
@@ -146,10 +145,10 @@ public class AnimationScreenshotInspector : Editor
 
         if (GUILayout.Button("撮影"))
         {
+            // 保存先未指定の場合、現在時刻からファイル名を決定
             if (string.IsNullOrEmpty(saveFolderProperty.stringValue))
             {
-                // 現在時刻からファイル名を決定
-                saveFolderProperty.stringValue = System.DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".png";
+                saveFolderProperty.stringValue = "Assets/" + System.DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".png";
             }
 
             if (isAlphaProperty.boolValue)
@@ -202,7 +201,6 @@ public class AnimationScreenshotInspector : Editor
         var layer = controller.layers[0];
         animator.Play("State1", 0, normartime);
         animator.SetLayerWeight(controller.layers.Length - 1, 1f);
-
     }
 
     private void SetAnimaton(Animator animator,AnimationClip clip, AnimationClip faceclip, int startTime)
@@ -277,6 +275,7 @@ public class AnimationScreenshotInspector : Editor
         // GameViewを再描画
         gameview.Repaint();
 
+        AssetDatabase.Refresh();
         Debug.Log("ScreenShot: " + path);
     }
 

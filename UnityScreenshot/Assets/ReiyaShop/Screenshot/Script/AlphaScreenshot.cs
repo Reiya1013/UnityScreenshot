@@ -74,5 +74,6 @@ public class AlphaScreenshot : MonoBehaviour
 
         Debug.Log($"Complete {path}");
 
+        AssetDatabase.Refresh();
     }
 }

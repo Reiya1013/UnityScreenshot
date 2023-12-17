@@ -140,7 +140,7 @@ public class AnimationScreenshotInspector : Editor
         GUILayout.Space(EditorGUIUtility.singleLineHeight);
 
         // アニメーションの再生位置を設定する
-        if ((Animator)avatarProperty.objectReferenceValue != null)
+        if ((Animator)avatarProperty.objectReferenceValue != null && ((AnimationClip)clipProperty.objectReferenceValue != null || (AnimationClip)faceclipProperty.objectReferenceValue != null))
             StartAnimation((Animator)avatarProperty.objectReferenceValue, displayTimeProperty.floatValue);
 
         if (GUILayout.Button("撮影"))
